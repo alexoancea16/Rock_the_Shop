@@ -20,7 +20,17 @@ class Employee
     public:
         static int idCount; // Static variable to count employee id
         const int basicSalary = 3500; // Constant variable to manage each emploee's salary then
-        Employee();
-        Employee(string, string, string, string);
+
+        Employee(); // Default constructor
+        Employee(string, string, string, string); // Default constructor with argumets
+
+        // Methods for reading inputs
+        void readFirstName(istream&);
+        void readSecondName(istream&);
+        void constraintCnp();
+        void readCnp(istream&);
+        void constraintDateOfEmployment();
+        void readDateOfEmployment(istream&);
+        friend istream& operator>>(istream&, Employee&);
         friend ostream& operator<<(ostream&, const Employee&);
 };

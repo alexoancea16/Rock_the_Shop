@@ -8,7 +8,8 @@ using namespace std;
 
 int main()
 {
-    Employee emp("Ion", "Popescu", "1234567890123", "01/01/2020");
+    Employee emp;
+    cin>>emp;
     cout<<emp;
     return 0;
 }
