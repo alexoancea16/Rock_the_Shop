@@ -33,4 +33,8 @@ class Employee
         void readDateOfEmployment(istream&);
         friend istream& operator>>(istream&, Employee&);
         friend ostream& operator<<(ostream&, const Employee&);
+
+        // Method for calculate salary
+        float getBaseSalary() const;
+        virtual float getSalary() const = 0;
 };

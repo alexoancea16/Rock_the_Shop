@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include "Employee.h"
-
+#include "Manager.h"
 using namespace std;
 
 int main()
 {
-    Employee emp;
+    Manager emp;
     cin>>emp;
     cout<<emp;
     return 0;

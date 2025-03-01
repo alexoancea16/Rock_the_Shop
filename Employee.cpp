@@ -139,9 +139,9 @@ void Employee::constraintDateOfEmployment()
         throw invalid_argument("Date of employment is not valid!");
     }
     // Birthday from CNP
-    int dayBirth = stoi(cnp.substr(1, 2));
+    int yearBirth = stoi(cnp.substr(1, 2));
     int monthBirth = stoi(cnp.substr(3, 2));
-    int yearBirth = stoi(cnp.substr(5, 2));
+    int dayBirth = stoi(cnp.substr(5, 2));
     if(cnp[0] == '1' || cnp[0] == '2')
     {
         yearBirth += 1900;
@@ -202,4 +202,16 @@ ostream& operator<<(ostream &dev, const Employee& employee)
     dev << "CNP: " << employee.cnp << endl;
     dev << "Date of employment: " << employee.dateOfEmployment << endl;
     return dev;
+}
+
+// Method for calculate salary
+float Employee::getBaseSalary() const
+{
+    // Calculate current year
+    time_t t = time(nullptr);
+    tm* now = localtime(&t);
+    // Calculate Years of experience
+    int yearOfExperience = (now->tm_year + 1900) - stoi(dateOfEmployment.substr(6, 4));
+    // Return base salary
+    return (float)(basicSalary + yearOfExperience * 100);
 }
