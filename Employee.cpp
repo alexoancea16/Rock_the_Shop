@@ -203,6 +203,17 @@ ostream& operator<<(ostream &dev, const Employee& employee)
     dev << "Date of employment: " << employee.dateOfEmployment << endl;
     return dev;
 }
+// Method for give money bonuss in month birth
+bool Employee::giveMoneyGift() const
+{
+    // Current month
+    time_t t = time(nullptr);
+    tm* now = localtime(&t);
+    // Compare current month with month birth
+    if((now->tm_mon + 1) == stoi(cnp.substr(5, 2)))
+        return true;
+    return false;
+}
 
 // Method for calculate salary
 float Employee::getBaseSalary() const

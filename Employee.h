@@ -35,6 +35,7 @@ class Employee
         friend ostream& operator<<(ostream&, const Employee&);
 
         // Method for calculate salary
+        bool giveMoneyGift() const;
         float getBaseSalary() const;
         virtual float getSalary() const = 0;
 };
