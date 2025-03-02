@@ -7,14 +7,15 @@
 #include "Assistant.h"
 #include "Operator.h"
 #include "Product.h"
+#include "Clothes.h"
 
 using namespace std;
 
 int main()
 {
-    Product emp;
+    Clothes emp;
     cin>>emp;
     cout<<emp;
-    emp.editProduct(); 
+    //emp.editProduct(); 
     return 0;
 }
