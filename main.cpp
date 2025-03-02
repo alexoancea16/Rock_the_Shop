@@ -15,5 +15,6 @@ int main()
     Product emp;
     cin>>emp;
     cout<<emp;
+    emp.editProduct(); 
     return 0;
 }

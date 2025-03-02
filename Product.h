@@ -24,4 +24,6 @@ class Product
         // Methods for read and display data
         friend ostream& operator<<(ostream&, const Product&);
         friend istream& operator>>(istream&, Product&);
+
+        void editProduct(); // Methof for editing products
 };
