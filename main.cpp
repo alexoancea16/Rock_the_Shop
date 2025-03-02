@@ -6,12 +6,13 @@
 #include "Manager.h"
 #include "Assistant.h"
 #include "Operator.h"
+#include "Product.h"
 
 using namespace std;
 
 int main()
 {
-    Operator emp;
+    Product emp;
     cin>>emp;
     cout<<emp;
     return 0;
