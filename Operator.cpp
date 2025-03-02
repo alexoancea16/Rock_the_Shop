@@ -1,0 +1,31 @@
+// Functionalty of Operator class
+
+#include "Operator.h"
+
+// Default contructor with arguments which calls the base class constructor 
+Operator::Operator(string firstName, string secondName, string cnp, string dateOfEmployment) : 
+    Employee(firstName, secondName, cnp, dateOfEmployment) {}
+
+// Method for calculate Salary
+float Operator::getSalary() const     // de adaugat procentul din valoarea comenzilor
+{
+    if(giveMoneyGift())
+        return getBaseSalary() * salaryCoefficient + 100;
+    return getBaseSalary() * salaryCoefficient;
+}
+
+// Methods for display data
+ostream& operator<<(ostream& dev, Operator& oper)
+{
+    dev << "Operator" << endl;
+    dev << (Employee&)oper;
+    dev << "Salary: " << oper.getSalary() << " lei" << endl;
+    return dev;
+}
+
+// Methods for reading inputs
+istream& operator>>(istream& dev, Operator& oper)
+{
+    dev >> (Employee&)oper;
+    return dev;
+}
