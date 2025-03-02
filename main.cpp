@@ -8,12 +8,13 @@
 #include "Operator.h"
 #include "Product.h"
 #include "Clothes.h"
+#include "Disk.h"
 
 using namespace std;
 
 int main()
 {
-    Clothes emp;
+    Disk emp;
     cin>>emp;
     cout<<emp;
     //emp.editProduct(); 
