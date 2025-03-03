@@ -26,11 +26,11 @@ int main()
             cout << "The store cannot operate. At least one manager, three operators, and one assistant are required." << endl;
             return 1;
         }
-        if(!verifyNumberOfProducts(listProducts))
+        /*if(!verifyNumberOfProducts(listProducts))
         {
             cout << "The store cannot function. It is necessary to have at least two products of each type (Records, VintageRecords, Items)." << endl;
             return 1;
-        }
+        }*/
         system("cls");
         cout << "Rock the shop" << endl << endl;
         cout << "Choose one of the options below!" << endl;
@@ -44,7 +44,8 @@ int main()
         switch (option)
         {
             case 1:
-                system("cls");  
+                system("cls");
+                employeeManagement(listEmployees);  
                 break;
             case 2:
                 system("cls");

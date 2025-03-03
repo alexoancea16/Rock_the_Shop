@@ -1,6 +1,7 @@
 // Header to implementation main functionality 
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 
 #include <vector>
 #include <memory>
@@ -28,7 +29,11 @@ bool verifyNumberOfProducts(const vector<unique_ptr<Product>>&);
 // Function for first option
 // Suboptions
 void addEmployee(vector<unique_ptr<Employee>>&);
+void deleteEmployee(vector<unique_ptr<Employee>>&);
+void editSecondName(vector<unique_ptr<Employee>>&);
+void displayEmployeeData(vector<unique_ptr<Employee>>&);
+void displayAllEmployeeData(vector<unique_ptr<Employee>>&);
 void employeeManagement(vector<unique_ptr<Employee>>&);
 
 // Function for second option
-void productManagement();
+//void productManagement();

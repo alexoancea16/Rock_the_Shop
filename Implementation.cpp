@@ -131,13 +131,84 @@ void addEmployee(vector<unique_ptr<Employee>>& employeeList)
             break;
         default:
             cout << "Invalid option!" << endl;
-            system("pause");
+    }
+}
+
+// Option 2
+void deleteEmployee(vector<unique_ptr<Employee>>& employeeList)
+{
+    system("cls");
+    cout << "Enter the index of the employee to be deleted (1 - " << employeeList.size() << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > employeeList.size())
+    {
+        cout << "Invlid index!" << endl;
+    }
+    else
+    {
+        employeeList.erase(employeeList.begin() + (index - 1));
+        cout << "Employee was delete" << endl;
+    }
+}
+
+// Option 3
+void editSecondName(vector<unique_ptr<Employee>>& employeeList)
+{
+    system("cls");
+    cout << "Enter the index of the employee to be deleted (1 - " << employeeList.size() << "): ";
+    int index;
+    cin >> index;
+    if(index < 1 || index > employeeList.size())
+    {
+        cout << "Invalid index!" << endl;
+    }
+    else
+    {
+        employeeList[index - 1]->editSecondName();
+    }
+}
+
+// Option 4
+void displayEmployeeData(vector<unique_ptr<Employee>>& employeeList)
+{
+    system("cls");
+    cout << "Enter the index of the employee to be deleted (1 - " << employeeList.size() << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > employeeList.size())
+    {
+        cout << "Invalid index!" << endl;
+    }
+    else
+    {
+        cout << *employeeList[index - 1] << endl;
+    }
+}
+
+// Option 5
+void displayAllEmployeeData(vector<unique_ptr<Employee>>& employeeList)
+{
+    system("cls");
+    if (employeeList.empty())
+    {
+        cout << "The List is empty!" << endl;
+    }
+    else
+    {
+        cout << "Employee list:" << endl;
+        for (int i = 0; i < employeeList.size(); ++i)
+        {
+            cout << "Employee " << i + 1 << ":" << endl;
+            cout << *employeeList[i] << endl;
+        }
     }
 }
 
 // Function for first option
 void employeeManagement(vector<unique_ptr<Employee>>& employeeList)
 {
+    system("cls");
     int option;
     do
     {
@@ -157,24 +228,37 @@ void employeeManagement(vector<unique_ptr<Employee>>& employeeList)
         case 1:
             system("cls");
             addEmployee(employeeList);
+            sleep(5);
             break;
         case 2:
             system("cls");
+            deleteEmployee(employeeList);
+            sleep(5);
             break;
         case 3:
             system("cls");
+            editSecondName(employeeList);
+            sleep(5);
             break;
         case 4:
             system("cls");
+            displayEmployeeData(employeeList);
+            sleep(20);
             break;
         case 5:
             system("cls");
+            displayAllEmployeeData(employeeList);
+            sleep(20);
             break;
         case 6: 
             system("cls");
+            cout << "Close this section. Thank you!" << endl;
+            sleep(5);
             break;
         default:
             system("cls");
+            cout << "Invalid option!" << endl;
+            sleep(5);
             break;
         }
     } while(option != 6);   

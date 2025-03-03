@@ -41,4 +41,7 @@ class Employee
 
         // Method for returnning typology of employee
         virtual string getTypology() const = 0;
+
+        // Another method
+        void editSecondName();
 };

@@ -226,3 +226,25 @@ float Employee::getBaseSalary() const
     // Return base salary
     return (float)(basicSalary + yearOfExperience * 100);
 }
+
+// Method for edit second name
+void Employee::editSecondName()
+{
+    cout << "Edit second name" <<endl;
+    while(true)
+    {
+        try // use the exception try - catch
+        {
+            cout << "Enter the new Second Name: ";
+            cin >> secondName;
+            if(secondName.length() < 3 || secondName.length() > 30)
+                throw invalid_argument("The second name must be between 3 and 30 characters.");
+            break;
+        }
+        catch(const invalid_argument& e)
+        {
+            cerr << "Erorr: " << e.what() << endl;
+        }
+    }
+    
+}
