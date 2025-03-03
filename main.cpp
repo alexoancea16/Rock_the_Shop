@@ -2,21 +2,67 @@
 // Main program with principals functionalities
 
 #include <iostream>
-#include "Employee.h"
-#include "Manager.h"
-#include "Assistant.h"
-#include "Operator.h"
-#include "Product.h"
-#include "Clothes.h"
-#include "Disk.h"
+#include <fstream>
+
+#include "Implementation.h"
 
 using namespace std;
 
 int main()
 {
-    Disk emp;
-    cin>>emp;
-    cout<<emp;
-    //emp.editProduct(); 
+    // Vector for employee
+    vector<unique_ptr<Employee>> listEmployees;
+    readEmployeesFromFile("Employee.txt", listEmployees); // Read employee from file
+    // Vector for product
+    vector<unique_ptr<Product>> listProducts;
+
+
+    // Create the menu
+    int option;
+    do
+    {
+        if(!verifyNumberOfEmployees(listEmployees))
+        {
+            cout << "The store cannot operate. At least one manager, three operators, and one assistant are required." << endl;
+            return 1;
+        }
+        if(!verifyNumberOfProducts(listProducts))
+        {
+            cout << "The store cannot function. It is necessary to have at least two products of each type (Records, VintageRecords, Items)." << endl;
+            return 1;
+        }
+        system("cls");
+        cout << "Rock the shop" << endl << endl;
+        cout << "Choose one of the options below!" << endl;
+        cout << "1. Employee management." << endl;
+        cout << "2. Product management." << endl;
+        cout << "3. Command management." << endl;
+        cout << "4. Raports." << endl;
+        cout << "5. Close program." << endl << endl;
+        cout << "Enter your option: ";
+        cin >> option;
+        switch (option)
+        {
+            case 1:
+                system("cls");  
+                break;
+            case 2:
+                system("cls");
+                break;
+            case 3:
+                system("cls");
+                break;
+            case 4:
+                system("cls");
+                break;
+            case 5:
+                system("cls");
+                break;
+            default:
+                system("cls");
+                break;
+        }
+    } while (option != 5);
+    
     return 0;
 }

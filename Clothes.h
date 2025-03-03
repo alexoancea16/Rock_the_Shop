@@ -23,4 +23,7 @@ class Clothes : public Product
 
         // Method for calculate price
         float getPrice();
+
+        // Method for returnning typology: clothes
+        string getTypology() const override;
 };

@@ -26,4 +26,7 @@ class Disk : public Product
 
         // Method for calculate price
         float getPrice();
+
+        // Method for returnning typology: disk
+        string getTypology() const override;
 };

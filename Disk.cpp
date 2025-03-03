@@ -44,3 +44,9 @@ float Disk::getPrice()
 {
     return basePrice + 5;
 }
+
+// Method for returnning typology: disk
+string Disk::getTypology() const
+{
+    return "Disk";
+}

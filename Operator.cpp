@@ -29,3 +29,9 @@ istream& operator>>(istream& dev, Operator& oper)
     dev >> (Employee&)oper;
     return dev;
 }
+
+// Method for returnning typology: operator
+string Operator::getTypology() const
+{
+    return "Operator";
+}

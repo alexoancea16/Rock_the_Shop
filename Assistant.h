@@ -22,4 +22,7 @@ class Assistant : public Employee
         // Methods for reading and display data
         friend ostream& operator<<(ostream&, Assistant&);
         friend istream& operator>>(istream&, Assistant&);
+
+        // Method for returnning typology: assistant
+        string getTypology() const override;
 };

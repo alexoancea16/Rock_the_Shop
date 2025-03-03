@@ -22,4 +22,7 @@ class Manager : public Employee
         // Methods for reading and display data
         friend ostream& operator<<(ostream&, Manager&);
         friend istream& operator>>(istream&, Manager&);
+
+        // Method for returnning typology: manager
+        string getTypology() const override;
 };

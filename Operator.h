@@ -23,4 +23,7 @@ class Operator : public Employee
         // Methods for reading and display data
         friend ostream& operator<<(ostream&, Operator&);
         friend istream& operator>>(istream&, Operator&);
+
+        // Method for returnning typology: operator
+        string getTypology() const override;
 };

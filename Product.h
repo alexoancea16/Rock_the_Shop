@@ -25,5 +25,9 @@ class Product
         friend ostream& operator<<(ostream&, const Product&);
         friend istream& operator>>(istream&, Product&);
 
-        void editProduct(); // Methof for editing products
+        // Methof for editing products
+        void editProduct(); 
+
+        // Method for returnning typology of employee
+        virtual string getTypology() const = 0;
 };

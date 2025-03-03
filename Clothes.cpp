@@ -32,3 +32,9 @@ float Clothes::getPrice()
 {
     return basePrice + 20;
 }
+
+// Method for returnning typology: clothes
+string Clothes::getTypology() const
+{
+    return "Clothes";
+}
