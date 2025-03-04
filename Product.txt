@@ -1,0 +1,12 @@
+Disk MetallicaAlbum 50 70 1 UniversalMusic 2010-06-12 Metallica BlackAlbum
+Disk QueenAlbum 30 60 1 UniversalMusic 2015-03-10 Queen GreatestHits
+Clothes TricouMetallica 100 50 Negru MetallicaOfficial
+Clothes GeacaRock 20 200 Negru RockFashion
+Clothes TricouQueen 50 45 Alb QueenOfficial
+Disk MasterOfPuppets 10 50 1 Universal 2023-01-15 Metallica MasterOfPuppets
+Disk TricouQueen 20 50 Negru QueenOfficial
+Disk AbbeyRoad 8 60 1 EMI 2019-09-26 Beatles AbbeyRoad
+Clothes JachetaMichaelJackson 5 70 Rosu MichaelJacksonCollection
+Clothes PalarieMJ 10 60 Negru MichaelJacksonOfficial
+Disk Nevermind 15 50 1 Geffen 2021-11-01 Nirvana Nevermind
+Clothes BluzaNirvana 10 40 Negru NirvanaOfficial

@@ -36,4 +36,10 @@ void displayAllEmployeeData(vector<unique_ptr<Employee>>&);
 void employeeManagement(vector<unique_ptr<Employee>>&);
 
 // Function for second option
-//void productManagement();
+// Suboption
+void addProduct(vector<unique_ptr<Product>>&);
+void deleteProduct(vector<unique_ptr<Product>>&);
+void editProduct(vector<unique_ptr<Product>>&);
+void displayProductsDetails(vector<unique_ptr<Product>>&);
+void displayAllProductsDetails(vector<unique_ptr<Product>>&);
+void productManagement(vector<unique_ptr<Product>>&);

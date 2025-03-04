@@ -263,3 +263,153 @@ void employeeManagement(vector<unique_ptr<Employee>>& employeeList)
         }
     } while(option != 6);   
 }
+
+// Function for second option
+// Function for menu
+// Option 1
+void addProduct(vector<unique_ptr<Product>>& productsList)
+{
+    cout << "What type of product do you want to add?" << endl;
+    cout << "1. Disk" << endl;
+    cout << "2. Clothes" << endl;
+    cout << "Enter your option: ";
+    int type;
+    cin >> type;
+    switch (type)
+    {
+        case 1:
+            productsList.push_back(make_unique<Disk>());
+            cin >> *productsList.back();
+            break;
+        case 2:
+            productsList.push_back(make_unique<Clothes>());
+            cin >> *productsList.back();
+            break;
+        default:
+            cout << "Your option is not valid" << endl;
+    }
+}
+
+// Option 2
+void deleteProduct(vector<unique_ptr<Product>>& productsList)
+{
+    cout << "Enter the index of the employee to be deleted (1 - " << productsList.size() << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > productsList.size())
+    {
+        cout << "Invalid indx!" << endl;
+    }
+    else
+    {
+        productsList.erase(productsList.begin() + (index - 1));
+        cout << "Product was deleted" << endl;
+    }
+}
+
+// Option 3
+void editProduct(vector<unique_ptr<Product>>& productsList)
+{
+    cout << "Enter the index of the product to be edit (1 - " << productsList.size() << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > productsList.size())
+    {
+        cout << "Invalid index!" << endl;
+    }
+    else
+    {
+        productsList[index - 1]->editProductDetails();
+    }
+}
+
+// Option 4
+void displayProductsDetails(vector<unique_ptr<Product>>& productsList)
+{
+    cout << "Enter the index of the product (1 - " << productsList.size() << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > productsList.size())
+    {
+        cout << "Invalid index!" << endl;
+    }
+    else
+    {
+        cout << *productsList[index - 1] << endl;
+    }
+}
+
+// Option 5
+void displayAllProductsDetails(vector<unique_ptr<Product>>& productsList)
+{
+    if (productsList.empty())
+    {
+        cout << "The list is empty!" << endl;
+    }
+    else
+    {
+        cout << "Products list:" << endl;
+        for (int i = 0; i < productsList.size(); ++i)
+        {
+            cout << "Product " << i + 1 << ":" << endl;
+            cout << *productsList[i] << endl;
+        }
+    }
+}
+
+// Function for second option
+void productManagement(vector<unique_ptr<Product>>& productsList)
+{
+    int option;
+    do
+    {
+        system("cls");
+        cout << "Product Management" << endl << endl;
+        cout << "1. Add product." << endl;
+        cout << "2. Delete product." << endl;
+        cout << "3. Edit product." << endl;
+        cout << "4. Display product details." << endl;
+        cout << "5. Display all product details." << endl;
+        cout << "6. Close this section." << endl << endl;
+        cout << "Enter your option: ";
+        cin >> option;
+        switch(option)
+        {
+            case 1:
+                system("cls");
+                addProduct(productsList);
+                sleep(5);
+                break;
+            case 2:
+                system("cls");
+                deleteProduct(productsList);
+                sleep(5);
+                break;
+            case 3:
+                system("cls");
+                editProduct(productsList);
+                sleep(5);
+                break;
+            case 4:
+                system("cls");
+                displayProductsDetails(productsList);
+                sleep(15);
+                break;
+            case 5:
+                system("cls");
+                displayAllProductsDetails(productsList);
+                sleep(15);
+                break;
+            case 6:
+                system("cls");
+                cout << "Close this section. Thank you!" << endl;
+                sleep(5);
+                break;
+            default:
+                system("cls");
+                cout << "Invalid option!" << endl;
+                sleep(5);
+                break;
+        }
+    }while(option != 6);
+}

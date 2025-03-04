@@ -75,3 +75,36 @@ void Product::editProduct()
             break;
     }
 }
+
+// Method for edit product detail
+void Product::editProductDetails()
+{
+    int option;
+    cout << "What detail do you want to edit?" << endl;
+    cout << "1. Name" << endl;
+    cout << "2. Number of products" << endl;
+    cout << "3. Base price" << endl;
+    cout << "Enter your option (1-3): ";
+    cin >> option;
+    switch (option)
+    {
+        case 1:
+            cout << "Enter the new name: ";
+            cin.ignore();
+            getline(cin, name);
+            cout << "The name was updated!" << endl;
+            break;
+        case 2:
+            cout << "Enter the new number of products: ";
+            cin >> numberOfProducts;
+            cout << "Number of products was updated!" << endl;
+            break;
+        case 3:
+            cout << "Enter the new base price";
+            cin >> basePrice;
+            cout << "The base price was updated!" << endl;
+            break;
+        default:
+            cout << "Invalid option!" << endl;
+    }
+}

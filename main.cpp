@@ -15,7 +15,7 @@ int main()
     readEmployeesFromFile("Employee.txt", listEmployees); // Read employee from file
     // Vector for product
     vector<unique_ptr<Product>> listProducts;
-
+    readProductsFromFile("Product.txt", listProducts);
 
     // Create the menu
     int option;
@@ -26,11 +26,11 @@ int main()
             cout << "The store cannot operate. At least one manager, three operators, and one assistant are required." << endl;
             return 1;
         }
-        /*if(!verifyNumberOfProducts(listProducts))
+        if(!verifyNumberOfProducts(listProducts))
         {
             cout << "The store cannot function. It is necessary to have at least two products of each type (Records, VintageRecords, Items)." << endl;
             return 1;
-        }*/
+        }
         system("cls");
         cout << "Rock the shop" << endl << endl;
         cout << "Choose one of the options below!" << endl;
@@ -49,6 +49,7 @@ int main()
                 break;
             case 2:
                 system("cls");
+                productManagement(listProducts);
                 break;
             case 3:
                 system("cls");
@@ -58,9 +59,11 @@ int main()
                 break;
             case 5:
                 system("cls");
+                cout << "Close the program! Thank you!" << endl;
                 break;
             default:
                 system("cls");
+                cout << "Invlid option!" << endl;
                 break;
         }
     } while (option != 5);
