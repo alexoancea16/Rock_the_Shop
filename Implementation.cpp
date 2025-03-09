@@ -445,6 +445,8 @@ void productManagement(vector<unique_ptr<Product>>& productsList)
 
 // Function for third option
 // Suboption
+
+// Option 1
 void displayAllOrders(vector<Order>& orders, const vector<unique_ptr<Product>>& productsList)
 {
     cout << "Orders: " << endl;
@@ -454,7 +456,51 @@ void displayAllOrders(vector<Order>& orders, const vector<unique_ptr<Product>>& 
     }
 }
 
-void orderManagement(vector<Order>& orders, const vector<unique_ptr<Product>>& productsList)
+// Option 2
+void loadOrders(queue<Order>& availableOrders, const vector<Order>& orders)
+{
+    for (const auto& order : orders)
+    {
+        if(order.getAviableOrder())
+            availableOrders.push(order);
+    }
+}
+// Function for simulation process
+void manageAviableOrders(queue<Order>& availableOrders, vector<unique_ptr<Employee>>& listEmployees)
+{
+    vector<Operator*> operators;
+    for (const auto& employee : listEmployees)
+    {
+        if (employee->getTypology() == "Operator")
+        {
+            operators.push_back(static_cast<Operator*>(employee.get()));
+        }
+    }
+    if (operators.empty())
+    {
+        cout << "There are no operators available to process orders." << endl;
+        return;
+    }
+    while (!availableOrders.empty())
+    {
+        for (Operator* op : operators)
+        {
+            if (availableOrders.empty())
+                break;
+            Order currentOrder = availableOrders.front();
+            availableOrders.pop();
+            // Simulation
+            cout << "Operator: " << op->getName() << " process the order with id: " << currentOrder.getId() << " for " << currentOrder.getProcessingTime() << " sec." << endl;
+            op->setAdditionSalary(currentOrder.getTotalValue());
+            // Pocessing Time simulation
+            this_thread::sleep_for(chrono::seconds(currentOrder.getProcessingTime()));
+            cout << "Order " << currentOrder.getId() << " processed by " << op->getName() << " it's over." << endl;
+        }
+    }
+    cout << "All order was process!" << endl;
+}
+
+void orderManagement(vector<Order>& orders, const vector<unique_ptr<Product>>& productsList, queue<Order>& availableOrders, vector<unique_ptr<Employee>>& listEmployees)
 {
     int option;
     do
@@ -471,10 +517,13 @@ void orderManagement(vector<Order>& orders, const vector<unique_ptr<Product>>& p
             case 1:
                 system("cls");
                 displayAllOrders(orders,productsList);
-                sleep(10);
+                sleep(30);
                 break;
             case 2:
                 system("cls");
+                loadOrders(availableOrders,orders);
+                manageAviableOrders(availableOrders, listEmployees);
+                sleep(50);
                 break;
             case 3:
                 system("cls");

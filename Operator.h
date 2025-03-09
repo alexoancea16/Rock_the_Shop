@@ -11,13 +11,14 @@ class Operator : public Employee
 {
     private:
         const float salaryCoefficient = 1;
-        // vectorul de comenzi 
-
+        float additionFromProcessingOrder = 0;
     public:
         Operator() = default; // Default constructor
-        Operator(string,string,string,string); // Default constructor with arguments
+        Operator(string, string, string, string, float = 0); // Default constructor with arguments
+
 
         // Method for calculate salary
+        void setAdditionSalary(float addition);
         float getSalary() const override;
 
         // Methods for reading and display data

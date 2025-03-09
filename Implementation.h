@@ -4,7 +4,10 @@
 #include <unistd.h>
 
 #include <vector>
+#include <queue>
 #include <memory>
+#include <chrono>
+#include <thread>
 
 #include "Employee.h"
 #include "Manager.h"
@@ -51,4 +54,5 @@ void productManagement(vector<unique_ptr<Product>>&);
 // Function for third option
 // Suboption
 void displayAllOrders(vector<Order>&, const vector<unique_ptr<Product>>&);
-void orderManagement(vector<Order>&, const vector<unique_ptr<Product>>&);
+void manageAviableOrders(queue<Order>&, vector<unique_ptr<Employee>>&);
+void orderManagement(vector<Order>&, const vector<unique_ptr<Product>>&, queue<Order>&, vector<unique_ptr<Employee>>&);

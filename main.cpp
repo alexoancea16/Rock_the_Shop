@@ -21,6 +21,9 @@ int main()
     vector<Order> listOrder;
     readOrderFromFile("Order.txt", listOrder, listProducts);
 
+    // Queue for aviable orders
+    queue<Order> availableOrders;
+
     // Create the menu
     int option;
     do
@@ -56,7 +59,7 @@ int main()
                 break;
             case 3:
                 system("cls");
-                orderManagement(listOrder, listProducts);
+                orderManagement(listOrder, listProducts, availableOrders, listEmployees);
                 break;
             case 4:
                 system("cls");

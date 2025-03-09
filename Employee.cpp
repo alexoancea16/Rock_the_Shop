@@ -227,6 +227,11 @@ float Employee::getBaseSalary() const
     return (float)(basicSalary + yearOfExperience * 100);
 }
 
+string Employee::getName()
+{
+    return firstName + " " + secondName;
+}
+
 // Method for edit second name
 void Employee::editSecondName()
 {

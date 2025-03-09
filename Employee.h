@@ -38,6 +38,7 @@ class Employee
         bool giveMoneyGift() const;
         float getBaseSalary() const;
         virtual float getSalary() const = 0;
+        string getName();
 
         // Method for returnning typology of employee
         virtual string getTypology() const = 0;

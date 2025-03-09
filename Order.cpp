@@ -118,6 +118,26 @@ void Order::displayOrder(const vector<unique_ptr<Product>>& productsList) const
         }
         cout << "Product code: " << productCode << ", Name: " << productName << ", Quantity: " << quantity << endl;
     }
-    cout << "Status: " << stockAvailable;
+    cout << "Status: " << stockAvailable << endl;
     cout << endl;
+}
+
+int Order::getId() const 
+{
+    return id;
+}
+
+int Order::getProcessingTime() const
+{
+    return processingTime;
+}
+
+bool Order::getAviableOrder() const
+{
+    return stockAvailable;
+}
+
+float Order::getTotalValue() const
+{
+    return totalValue;
 }

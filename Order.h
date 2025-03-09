@@ -36,4 +36,9 @@ class Order
 
         // Method for display order
         void displayOrder(const vector<unique_ptr<Product>>& productsList) const;
+
+        int getId() const;
+        int getProcessingTime() const;
+        bool getAviableOrder() const;
+        float getTotalValue() const;
 };

@@ -3,15 +3,20 @@
 #include "Operator.h"
 
 // Default contructor with arguments which calls the base class constructor 
-Operator::Operator(string firstName, string secondName, string cnp, string dateOfEmployment) : 
-    Employee(firstName, secondName, cnp, dateOfEmployment) {}
+Operator::Operator(string firstName, string secondName, string cnp, string dateOfEmployment, float additionFromProcessingOrder) : 
+    Employee(firstName, secondName, cnp, dateOfEmployment), additionFromProcessingOrder(additionFromProcessingOrder) {}
 
 // Method for calculate Salary
+void Operator::setAdditionSalary(float addition)
+{
+    additionFromProcessingOrder += 0.15*addition;
+}
+
 float Operator::getSalary() const     // de adaugat procentul din valoarea comenzilor
 {
     if(giveMoneyGift())
-        return getBaseSalary() * salaryCoefficient + 100;
-    return getBaseSalary() * salaryCoefficient;
+        return getBaseSalary() * salaryCoefficient + additionFromProcessingOrder + 100;
+    return getBaseSalary() * salaryCoefficient + additionFromProcessingOrder;
 }
 
 // Methods for display data
