@@ -28,7 +28,7 @@ istream& operator>>(istream& dev, Clothes& clothes)
 }
 
 // Method for calculate price
-float Clothes::getPrice()
+float Clothes::getPrice() const
 {
     return basePrice + 20;
 }

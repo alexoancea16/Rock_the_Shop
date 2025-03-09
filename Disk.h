@@ -25,7 +25,7 @@ class Disk : public Product
         friend istream& operator>>(istream&, Disk&);
 
         // Method for calculate price
-        float getPrice();
+        float getPrice() const override;
 
         // Method for returnning typology: disk
         string getTypology() const override;

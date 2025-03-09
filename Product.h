@@ -28,8 +28,19 @@ class Product
         // Methof for editing products
         void editProduct(); 
 
-        // Method for returnning typology of employee
+        // Method for returnning typology of product
         virtual string getTypology() const = 0;
+
+        // Method for returnning price
+        virtual float getPrice() const = 0; // Pure virtual method for price
+
+        // Method for getter
+        int getCode();
+        int getNumberOfProducts();
+        string getName();
+
+        // Method for update stock
+        void stockUpdate(int);
 
         // Another method
         void editProductDetails();

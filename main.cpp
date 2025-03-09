@@ -17,6 +17,10 @@ int main()
     vector<unique_ptr<Product>> listProducts;
     readProductsFromFile("Product.txt", listProducts);
 
+    // Vector for order
+    vector<Order> listOrder;
+    readOrderFromFile("Order.txt", listOrder, listProducts);
+
     // Create the menu
     int option;
     do
@@ -36,9 +40,8 @@ int main()
         cout << "Choose one of the options below!" << endl;
         cout << "1. Employee management." << endl;
         cout << "2. Product management." << endl;
-        cout << "3. Command management." << endl;
-        cout << "4. Raports." << endl;
-        cout << "5. Close program." << endl << endl;
+        cout << "3. Order management." << endl;
+        cout << "4. Close program." << endl << endl;
         cout << "Enter your option: ";
         cin >> option;
         switch (option)
@@ -53,11 +56,9 @@ int main()
                 break;
             case 3:
                 system("cls");
+                orderManagement(listOrder, listProducts);
                 break;
             case 4:
-                system("cls");
-                break;
-            case 5:
                 system("cls");
                 cout << "Close the program! Thank you!" << endl;
                 break;
@@ -66,7 +67,6 @@ int main()
                 cout << "Invlid option!" << endl;
                 break;
         }
-    } while (option != 5);
-    
+    } while (option != 4);
     return 0;
 }

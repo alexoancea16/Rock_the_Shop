@@ -40,7 +40,7 @@ istream& operator>>(istream& dev, Disk& disk)
 }
 
 // Method for calculate price
-float Disk::getPrice()
+float Disk::getPrice() const
 {
     return basePrice + 5;
 }

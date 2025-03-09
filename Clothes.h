@@ -22,7 +22,7 @@ class Clothes : public Product
         friend istream& operator>>(istream&, Clothes&);
 
         // Method for calculate price
-        float getPrice();
+        float getPrice() const override;
 
         // Method for returnning typology: clothes
         string getTypology() const override;

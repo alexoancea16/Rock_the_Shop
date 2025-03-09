@@ -13,6 +13,7 @@
 #include "Product.h"
 #include "Clothes.h"
 #include "Disk.h"
+#include "Order.h"
 
 // Function for read the list of employee from file and create a list
 void readEmployeesFromFile(const string&, vector<unique_ptr<Employee>>&);
@@ -23,6 +24,9 @@ bool verifyNumberOfEmployees(const vector<unique_ptr<Employee>>&);
 void readProductsFromFile(const string&, vector<unique_ptr<Product>>&);
 // Function for verify if the shop has a minim number of products in stoc
 bool verifyNumberOfProducts(const vector<unique_ptr<Product>>&);
+
+// Function for read the list of order from file and create a list
+void readOrderFromFile(const string&, vector<Order>&, const vector<unique_ptr<Product>>&);
 
 // Function for menu
 
@@ -43,3 +47,8 @@ void editProduct(vector<unique_ptr<Product>>&);
 void displayProductsDetails(vector<unique_ptr<Product>>&);
 void displayAllProductsDetails(vector<unique_ptr<Product>>&);
 void productManagement(vector<unique_ptr<Product>>&);
+
+// Function for third option
+// Suboption
+void displayAllOrders(vector<Order>&, const vector<unique_ptr<Product>>&);
+void orderManagement(vector<Order>&, const vector<unique_ptr<Product>>&);

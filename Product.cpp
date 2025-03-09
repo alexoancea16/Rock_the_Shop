@@ -108,3 +108,32 @@ void Product::editProductDetails()
             cout << "Invalid option!" << endl;
     }
 }
+
+// Method for getter
+int Product::getCode()
+{
+    return code;
+}
+
+int Product::getNumberOfProducts()
+{
+    return numberOfProducts;
+}
+
+string Product::getName()
+{
+    return name;
+} 
+
+// Method for update stock
+void Product::stockUpdate(int quantity)
+{
+    if(numberOfProducts != 0)
+    {
+        numberOfProducts -= quantity;
+    }
+    else
+    {
+        cout << "The stock is empty";
+    }
+}

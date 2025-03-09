@@ -103,6 +103,35 @@ bool verifyNumberOfProducts(const vector<unique_ptr<Product>>& productsList)
     return numberOfDisk >= 2 && numberOfClothes >= 2;
 }
 
+// Function for read the list of order from file and create a list
+void readOrderFromFile(const string& nameOfFile, vector<Order>& orders, const vector<unique_ptr<Product>>& inventory)
+{
+    ifstream file(nameOfFile);
+    if (!file.is_open())
+    {
+        cout << "Erorr open file!" << endl;
+        return;
+    }
+    time_t orderTimeRaw;
+    int processingTime;
+    int numDistinctProducts;
+    vector<pair<int, int>> products;
+    while (file >> orderTimeRaw >> processingTime >> numDistinctProducts) 
+    {
+        products.clear();
+        for (int i = 0; i < numDistinctProducts; ++i) {
+            int productCode, quantity;
+            file >> productCode >> quantity;
+            products.emplace_back(productCode, quantity);
+        }
+        auto orderTime = chrono::system_clock::from_time_t(orderTimeRaw);
+        Order newOrder(orderTime, processingTime, numDistinctProducts, products);
+        newOrder.setOrder(inventory);
+        orders.push_back(newOrder);
+    }
+    file.close();
+}
+
 // Function for menu
 // Option 1
 void addEmployee(vector<unique_ptr<Employee>>& employeeList)
@@ -412,4 +441,51 @@ void productManagement(vector<unique_ptr<Product>>& productsList)
                 break;
         }
     }while(option != 6);
+}
+
+// Function for third option
+// Suboption
+void displayAllOrders(vector<Order>& orders, const vector<unique_ptr<Product>>& productsList)
+{
+    cout << "Orders: " << endl;
+    for (const auto& order : orders) 
+    {
+        order.displayOrder(productsList);
+    }
+}
+
+void orderManagement(vector<Order>& orders, const vector<unique_ptr<Product>>& productsList)
+{
+    int option;
+    do
+    {
+        system("cls");
+        cout << "Orders managemnt" << endl;
+        cout << "1. Display orders" << endl;
+        cout << "2. Power management the valid orders" << endl;
+        cout << "3. Close this section" << endl;
+        cout << "Enter your option: ";
+        cin >> option;
+        switch (option)
+        {
+            case 1:
+                system("cls");
+                displayAllOrders(orders,productsList);
+                sleep(10);
+                break;
+            case 2:
+                system("cls");
+                break;
+            case 3:
+                system("cls");
+                cout << "Close this section. Thank you!" << endl;
+                sleep(5);
+                break;
+            default:
+                system("cls");
+                cout << "Invalid option!" << endl;
+                sleep(5);
+                break;
+        }
+    } while (option != 3);  
 }
