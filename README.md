@@ -43,5 +43,67 @@ Date: March 2025 <br>
 
   To manage orders, we used the __Order__ class (the __Order.h__ and __Order.cpp__ files), representing an order placed by a customer in the rock product store.
 ## Description of main classes and methods
+1. __Employee__
+   + The Employee class is the base class for managing employees in the rock store. It describes the characteristics and behavior common to all types of employees, such as managers, operators, and assistants. The class includes attributes related to employee identity and seniority, as well as methods for calculating salary, reading data, and displaying it. This is an abstract class because it contains pure virtual methods such as getSalary() and getTypology(), which means that it cannot be instantiated directly, but must be inherited by other classes that implement these methods.
+   + Main attributes:
+     - __id__: A unique identifier for each employee, automatically generated using the static variable __idCount__.
+     - __firstName__: The employee's first name (minimum 3 characters).
+     - __secondName__: The employee's last name (minimum 3 characters).
+     - __cnp__: Personal Numeric Code (CNP), which must be validated to comply with the correct format.
+     - __dateOfEmployment__: The employee's date of employment, used to calculate their seniority in the company.
+     - __basicSalary__: A constant base salary of 3500 RON, to which other benefits are added depending on seniority and type of employee.
+   + Constructors:
+     - __Employee()__: The default constructor that initializes objects without receiving any parameters.
+     - __Employee(string, string, string, string)__: Constructor that receives the parameters needed to initialize the firstName, secondName, cnp, and dateOfEmployment attributes.
+   + Data reading methods:
+     - __readFirstName(istream&)__: Reads the employee's first name from the input stream and checks if it complies with the imposed constraints (minimum 3 characters, maximum 30).
+     - __readSecondName(istream&)__: Similar to readFirstName, but for the last name.
+     - __readCnp(istream&)__ and __constraintCnp()__: Reads and validates the employee's CNP according to the correct format.
+     - __readDateOfEmployment(istream&)__ and __constraintDateOfEmployment()__: Reads and validates the date of employment to ensure the correct format and that the employee is at least 18 years old at the time of employment.
+   + Methods for overriding operators:
+     - __operator>>(istream&, Employee&)__: Overrides the input operator to allow employee details to be read from an input stream.
+     - __operator<<(ostream&, const Employee&)__: Overrides the output operator to allow employee details to be displayed in an output stream.
+   + Methods for salary management:
+     - __getBaseSalary() const__: Returns the employee's base salary (3500 RON).
+     - __giveMoneyGift() const__: Checks if the employee receives their monthly birthday bonus (100 RON).
+     - __getSalary() const__: Pure virtual method that will be implemented in derived classes to calculate the specific salary for each employee type.
+   + Other methods:
+     - __getName()__: Returns the full name of the employee (first name and last name).
+     - __editSecondName()__: Allows the employee's last name to be modified (for example, in case of marriage).
+     - __getTypology() const__: Pure virtual method that will be implemented by derived classes to return the employee's typology (manager, operator or assistant).
+
+2. __Manager__
+   + The Manager class is a subclass of the base Employee class and describes the manager type employees in the rock product store. This class inherits all the basic characteristics of an employee and adds functionality specific to the manager role, such as calculating a salary with a higher coefficient and returning the employee typology.
+   + Attributes:
+     - __salaryCoefficient__: The manager-specific coefficient for calculating salary. Each manager has a coefficient of 1.25, which means that their base salary is increased by 25%.
+   + Constructors: __Manager()__ and __Manager(string, string, string, string)__.
+   + Method for calculating salary:
+     - __getSalary() const__: Overrides the virtual method getSalary() in the base class Employee. This method calculates the manager's salary.
+The manager does not receive any additional bonuses related to orders or birthdays.
+   + Methods for overriding operators: __operator>>(istream&, Manager&)__ and __operator<<(ostream&, Manager&)__.
+   + Method for returning the typology:
+     - __getTypology() const__: Overrides the virtual method getTypology() in the base class. Returns the employee type, in this case, the value "manager". This method is used to identify the specifics of the employee in the context of the store.
+
+3. __Operator__
+   + The Operator class is a subclass of the base Employee class and represents the operator employees within the rock store. Operators are responsible for handling customer orders, and their salary is calculated based on a base salary plus a bonus that depends on the value of the orders processed.
+   + Attributes:
+     - __salaryCoefficient__: The coefficient specific to operators, equal to 1. Thus, the base salary of an operator is not modified by this coefficient.
+     - __additionFromProcessingOrder__: The additional bonus that the operator receives depending on the orders processed. This is initialized with 0, but can be modified later depending on the value of the orders processed (0.5% of the order value).
+   + Constructors: __Operator()__ and __Operator(string, string, string, string, float = 0)__.
+   + Methods:
+     - __setAdditionSalary(float)__: Allows setting the additional bonus obtained from processing orders. Operators receive a bonus of 0.5% of the value of the processed orders.
+     - __getSalary() const__: Overrides the virtual method getSalary() from the base class Employee and calculates the operator's salary based on the base salary and the bonus obtained from the processed orders.
+     - Methods for reading and displaying data: Similar to those in the Employee class. Overrides the operators __>>__ and __<<__ to allow reading and displaying operator details.
+     - __getTypology() const__: Overrides the virtual method getTypology() and returns the employee's typology, in this case "operator".
+
+4. __Assistant__
+   + The Assistant class is a subclass of the base Employee class and describes the assistant employees in the rock store. Assistants have ancillary responsibilities, such as tracking orders and other administrative tasks. Their salary is calculated based on a specific coefficient, which is lower than that of other employees.
+   + Attributes:
+     - __salaryCoefficient__: The coefficient specific to assistants, equal to 0.75. Thus, an assistant's base salary is reduced by 25%, reflecting their administrative responsibilities.
+   + Constructors: __Assistant()__ and __Assistant(string, string, string, string)__.
+   + Methods:
+     - __getSalary() const__: Overrides the virtual method __getSalary()__ in the base class Employee. This calculates the assistant's salary using the coefficient of 0.75 applied to the base salary.
+     - Methods for reading and displaying data: Similar to those in the Employee class. Override the operators __>>__ and __<<__ to allow reading and displaying assistant details.
+     - __getTypology() const__: Overrides the virtual method getTypology() and returns the employee's typology, in this case "assistant".
 ## Running the program
 ## Conclusion
