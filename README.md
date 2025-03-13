@@ -179,4 +179,5 @@ The manager does not receive any additional bonuses related to orders or birthda
       - __readOrderFromFile(const string&, vector<Order>&, const vector<unique_ptr<Product>>& products)__: The function reads a list of orders from a file and creates Order objects associated with the products in stock.
       - Suboptions for order management: __displayAllOrders__ (displays all placed orders), __manageAviableOrders__ (manages available orders and automatically allocates orders to available operators), __orderManagement__ (allows complete order management, including their display, automatic allocation, and processing).
 ## Running the program
+To run this project, make sure you have a C++ compiler installed, such as g++. The project can use a Makefile to automate the compilation process.
 ## Conclusion
