@@ -105,5 +105,78 @@ The manager does not receive any additional bonuses related to orders or birthda
      - __getSalary() const__: Overrides the virtual method __getSalary()__ in the base class Employee. This calculates the assistant's salary using the coefficient of 0.75 applied to the base salary.
      - Methods for reading and displaying data: Similar to those in the Employee class. Override the operators __>>__ and __<<__ to allow reading and displaying assistant details.
      - __getTypology() const__: Overrides the virtual method getTypology() and returns the employee's typology, in this case "assistant".
+    
+5. __Product__
+  + The Product class is an abstract base class that describes the common characteristics of all types of products sold in the rock store. It contains attributes and methods that allow the management of products, such as the name, the number of products in stock, and the base price. Being an abstract class, it contains pure virtual methods that must be implemented by derived classes (Clothes, Disk).
+  + Attributes:
+    - __code__: A unique code for each product, automatically generated using the static variable codeCount.
+    - __name__: Product name.
+    - __numberOfProducts__: Number of products of this type available in stock.
+    - __basePrice__: The base price of the product, without additional costs (packaging, delivery, etc.).
+  + Constructors:
+    - __Product()__: Default constructor that initializes attributes to default values.
+    - __Product(string, int, float)__: Constructor that initializes the name, numberOfProducts, and basePrice attributes with the provided values.
+  + Methods:
+    - Methods for reading and displaying data: __operator>>(istream&, Product&)__ and __operator<<(ostream&, const Product&)__ override the operators to allow reading and displaying product data from input and output streams.
+    - Pure virtual methods: __getTypology() const__ method that will be implemented by derived classes to return the specific typology of the product (for example, "Clothes" or "Disk") and __getPrice() const__: method to calculate the final price of the product. Derived classes will implement this method and add additional packaging and shipping costs.
+    - Another methods: __stockUpdate(int)__ allows updating the stock for a product, adding or subtracting a number of products, __getCode()__ returns the unique product code, __getNumberOfProducts()__ returns the number of products available, __getName()__ returns the product name.
+   
+6. __Clothes__
+  + The Clothes class is a subclass of the base Product class and describes the clothing products in the rock store. It extends the general characteristics of products, adding specific attributes such as color and brand, and implements methods to calculate the final price and return the product type.
+  + Attributes:
+    - __color__: The color of the clothing item (e.g., black, red, etc.).
+    - __brand__: The brand of the clothing item (e.g., Metallica, AC/DC, etc.).
+  + Constructors: __Clothes()__ and __Clothes(string, int, float, string, string)__.
+  + Methods:
+    - Methods for reading and displaying data: Similar to the Product base class, override the __>>__ and __<<__ operators to allow reading and displaying details of clothing items.
+    - __getPrice() const__: Overrides the virtual getPrice() method in the base class. This method calculates the final price of a clothing item by adding a fixed cost of 20 RON for packaging and shipping to the base price of the product.
+    - __getTypology() const__: Overrides the virtual method getTypology() in the base class and returns the specific typology of the product, in this case "clothes".
+   
+7. __Disk__
+   + The Disk class is a subclass of the base Product class and describes the disc products (CDs and vinyls) sold in the rock store. It adds attributes specific to disc products, such as type (CD or vinyl), label, release date, band, and album name, and implements methods to calculate the final price and return the product type.
+   + Attributes:
+    - __type__: The type of record, where true represents a vinyl and false a CD.
+    - __recordLabel__: The record label that produced the album.
+    - __date__: The release date of the album.
+    - __band__: The name of the band that recorded the album.
+    - __nameOfAlbum__: The name of the music album
+   + Constructors: __Disk()__ and __Disk(string, int, float, bool, string, string, string, string)__.
+   + Methods:
+     - Methods for reading and displaying data: Similar to the Product base class, overrides the __>>__ and __<<__ operators to allow reading and displaying details about discs.
+     - __getPrice() const__: Overrides the virtual method __getPrice()__ in the base class and calculates the final price of a disc. For discs, a fixed cost of 5 RON for delivery is added to the base price.
+     - __getTypology() const__: Overrides the virtual method getTypology() in the base class and returns the specific typology of the product, in this case "disk".
+    
+8. __Order__
+   + The Order class describes and manages an order placed by a customer in the rock store. It contains details about when the order was placed, the products ordered, the processing time, and the total value. The class manages the ordered products, checks their availability in stock, and calculates the total value of the order.
+   + Attributes:
+     - __id__: A unique identifier for each order, automatically generated using the static variable idCount.
+     - __orderTime__: The time the order was placed, saved as a point in time using chrono::system_clock.
+     - __processingTime__: The time required to process the order (packaging and shipping).
+     - __numDistinctProducts__: The number of distinct product types included in the order.
+     - __orderedProducts__: A vector of pairs that stores the product code and the quantity ordered (pairs of type int, int).
+     - __stockAvailable__: A (boolean) indicator that shows whether all ordered products are available in stock.
+     - __totalValue__: The total value of the order, including the costs of the products and any additional packaging and shipping costs.
+   + Contructors:
+     - __Order()__: Implicit constructor that initializes attributes without taking any parameters.
+     - __Order(chrono::system_clock::time_point, int, int, vector<pair<int, int>>, bool, float)__: Constructor that gets and sets attributes such as order placement time, processing time, number of distinct products, stock availability, and total value.
+   + Methods:
+     - Methods for reading and displaying data: __operator>>(istream&, Order&)__ and __operator<<(ostream&, const Order&)__ override the operators to allow reading and displaying order details.
+     - __setOrder(const vector<unique_ptr<Product>>& inventory)__: This method is responsible for processing the order. It checks the availability of the ordered products in the store's inventory (stored in a vector of Product objects), calculates the total value of the order, and updates the stockAvailable indicator.
+     - __displayOrder(const vector<unique_ptr<Product>>& productsList) const__: Displays the order details, including the products ordered, quantities, and total value. Uses a productsList to access the details of each product ordered.
+     - Getter methods: __getId() const__ (returns the unique order ID), __getProcessingTime() const__ (returns the time it took to process the order), __getAviableOrder() const__ (returns the stock availability for the products in the order true/false), __getTotalValue() const__ (returns the total value of the order, including packaging and shipping costs).
+
+9. __Implementation File__
+    + This file represents the header for implementing the main functionalities of the project, providing declarations for essential functions related to the management of employees, products and orders in the rock product store. Its structure covers the reading, checking, management and display aspects for each of the three basic components of the application: employees, products and orders.
+    + Employee management:
+      - __readEmployeesFromFile(const string&, vector<unique_ptr<Employee>>&)__: The function reads a list of employees from a file and creates a list of Employee objects.
+      - __verifyNumberOfEmployees(const vector<unique_ptr<Employee>>& employees)__: Checks if the store has a minimum number of employees to operate (for example, a manager, at least 3 operators and an assistant).
+      - Suboptions for employee management: __addEmployee__ (adds a new employee to the store), __deleteEmployee__ (deletes an employee from the list), __editSecondName__ (changes the last name of an employee), __displayEmployeeData__ and __displayAllEmployeeData__ (displays information about an employee or all employees).
+    + Products management:
+      - __readProductsFromFile(const string&, vector<unique_ptr<Product>>& products)__: The function reads a list of products from a file and creates a list of objects of type Product.
+      - __verifyNumberOfProducts(const vector<unique_ptr<Product>>& products)__: Checks if the store has a minimum number of products of each type in stock.
+      - Suboptions for product management: __addProduct__ (adds a new product to stock), __deleteProduct__ (deletes a product from stock), __editProduct__ (modify the details of an existing product), __displayProductsDetails__ and __displayAllProductsDetails__ (displays the details of a product or all products in stock).
+    + Orders management:
+      - __readOrderFromFile(const string&, vector<Order>&, const vector<unique_ptr<Product>>& products)__: The function reads a list of orders from a file and creates Order objects associated with the products in stock.
+      - Suboptions for order management: __displayAllOrders__ (displays all placed orders), __manageAviableOrders__ (manages available orders and automatically allocates orders to available operators), __orderManagement__ (allows complete order management, including their display, automatic allocation, and processing).
 ## Running the program
 ## Conclusion
