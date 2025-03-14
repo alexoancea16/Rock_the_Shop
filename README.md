@@ -180,4 +180,36 @@ The manager does not receive any additional bonuses related to orders or birthda
       - Suboptions for order management: __displayAllOrders__ (displays all placed orders), __manageAviableOrders__ (manages available orders and automatically allocates orders to available operators), __orderManagement__ (allows complete order management, including their display, automatic allocation, and processing).
 ## Running the program
 To run this project, make sure you have a C++ compiler installed, such as g++. The project can use a Makefile to automate the compilation process.
+Steps for running:
++ Cloning and navigating the project directory:
+  ```
+  git clone https://github.com/alexoancea16/Rock_the_Shop/
+  cd <name-director>
+  ```
++ Compiling the project: Use the make command to compile all the source files:
+  ```
+  make
+  ```
++ Running the application: After compiling, run the application using the command:
+  ```
+  ./main
+  ```
+The project reads initial data about employees: __Employee.txt__, products: __Product.txt__, and orders: __Order.txt__ from external files. These files must be properly formatted and placed in the same location as the executable or specified in the appropriate path in the source code.
 ## Conclusion
+This application serves as a basic inventory management and employee system for a store, allowing the management of employees, products, and orders. By using object-oriented programming principles such as inheritance and polymorphism, the system efficiently handles different types of products (e.g., clothes, disks) and employee roles (e.g., managers, assistants). <br>
+
+Through modular code and clear separation of concerns, the application is easy to extend and maintain. The use of input files for data loading makes it convenient to work with real-world data, simulating a store's day-to-day operations. <br>
+
+While the current version of the application provides basic functionality, there are several improvements that could be made in future iterations:
++ Currently, the application is console-based. Adding a user-friendly graphical interface would make the application more accessible to non-technical users and improve overall usability.
++ Instead of using text files, integrating a database (e.g., SQLite, MySQL) would enhance data persistence and allow for more complex queries, as well as handling larger datasets more efficiently.
++ Implementing real-time updates to the product stock when an order is placed would make the system more dynamic. Additionally, adding features like automatic stock replenishment notifications when inventory is low could be beneficial.
++ Adding features like sales tracking, popular product analytics, or order history trends would provide valuable insights for store managers to optimize stock and employee efficiency.
++ Extending the system to handle multiple stores and branches with centralized inventory management could be useful for larger businesses with multiple locations.
+
+__Thank you!__
+
+Project made by Alexandru Oancea <br>
+Email: alexandruoancea49@gmail.com
+
+
